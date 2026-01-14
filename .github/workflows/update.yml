@@ -1,0 +1,28 @@
+name: Update Leaderboard
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'  # Har 12 ghante baad chalega
+  workflow_dispatch:        # Button taaki aap manually bhi run kar sakein
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Firebase Admin
+        run: npm install firebase-admin
+
+      - name: Run Leaderboard Script
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: node index.js
+        
