@@ -1,9 +1,7 @@
 name: Update Leaderboard
 
 on:
-  schedule:
-    - cron: '0 */12 * * *'  # Har 12 ghante baad chalega
-  workflow_dispatch:        # Button taaki aap manually bhi run kar sakein
+  workflow_dispatch:        # Sirf API (cron-job.org) ya manual trigger ke liye
 
 jobs:
   build:
